@@ -7,6 +7,43 @@
   width: 100%;
   font-size: 0;
 }
+.imageSlider{
+  position: relative;
+  width: 100%;
+}
+.imageSlider .goLeft{
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.imageSlider .goRight{
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.imageSlider img {
+  width: 100%;
+  height: auto;
+}
+
 #left,
 #right {
   display: inline-block;
@@ -15,23 +52,57 @@
   vertical-align: top;
   font-size: 12px;
 }
+
+h1 {
+  text-align: center;
+  font-size: 60px;
+}
+h2{
+  text-align: center;
+  margin-top: 10%;
+  font-size: 30px;
+}
 #left {
   width: 50%;
   text-align: center;
 }
+
 #wishlist {
-  float: right;
-  margin-right: 20%;
-  margin-top: 5%;
+  text-align: center;
+  margin-top: 3%;
+  margin-left: 3%;
+  margin-right: 3%;
+  color: black;
+  background-color:turquoise;
+  width: 50%;
+  font-size: 30px;
+}
+
+#general {
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 4px;
 }
 
 #right {
   width: 50%;
-  background: yellow;
 }
 
-#myImage{
-  width:150px;
-  height: 150px;
+#myImage {
+  width: 50%;
   margin-top: 5%;
+}
+
+#desc{
+  font-size: 20px;
+}
+
+#cart{
+  text-align: center;
+  margin-top: 3%;
+  margin-left: 20%;
+  color: black;
+  background-color: orange;
+  width: 50%;
+  font-size: 30px;
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../product';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-product-description-page',
@@ -17,8 +19,19 @@ export class ProductDescriptionPageComponent implements OnInit {
   ];
   index: number = 0;
   image: String = this.images[this.index].img;
-  constructor() {}
-  ngOnInit(): void {}
+  
+  prodid:any;
+  prod:Product;
+  
+  constructor(private pservice:ProductService) {
+    this.prod=new Product;
+  }
+  ngOnInit(): void {
+    this.prodid = localStorage.getItem('prodid');
+    this.pservice.serachProductById(1).subscribe((data) => {
+      this.prod = data as Product;
+    });
+  }
 
   goRight() {
     console.log('Right button clicked');
@@ -44,4 +57,5 @@ export class ProductDescriptionPageComponent implements OnInit {
       console.log(this.image + ' ' + 'index= ' + this.index);
     }
   }
+
 }
