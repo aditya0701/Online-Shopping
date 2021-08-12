@@ -12,4 +12,16 @@ export class ProductService {
   serachProductById(productid: number) {
     return this.httpClient.get(this.baseUrl + '/products/' + productid);
   }
+
+  searchImageById(productid: number) {
+    return this.httpClient.get(
+      this.baseUrl + '/products/' + productid + '/images'
+    );
+  }
+
+  addToCart(productid: number, cartId: number) {
+    return this.httpClient.put(
+      this.baseUrl + '/' + productid + '/cart/' +cartId,0
+    );
+  }
 }

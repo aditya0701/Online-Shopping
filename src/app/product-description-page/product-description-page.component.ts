@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Image } from '../image';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 
@@ -8,29 +9,30 @@ import { ProductService } from '../product.service';
   styleUrls: ['./product-description-page.component.css'],
 })
 export class ProductDescriptionPageComponent implements OnInit {
-  images = [
-    { img: '/assets/images/img_1.jpg' },
-    { img: '/assets/images/asusA17.jpg' },
-    { img: '/assets/images/asusA17_2.jpg' },
-    { img: '/assets/images/asusA17_3.jpg' },
-    { img: '/assets/images/asusA17_4.jpg' },
-    { img: '/assets/images/asusA17_5.jpg' },
-    { img: '/assets/images/asusA17_6.jpg' },
-  ];
+  images: any;
   index: number = 0;
-  image: String = this.images[this.index].img;
-  
-  prodid:any;
-  prod:Product;
-  
-  constructor(private pservice:ProductService) {
-    this.prod=new Product;
+  image: string | undefined;
+  prodid: number = 2;
+  prod: Product;
+  cartId:number=4;
+  constructor(private pservice: ProductService) {
+    this.prod = new Product();
   }
   ngOnInit(): void {
-    this.prodid = localStorage.getItem('prodid');
-    this.pservice.serachProductById(1).subscribe((data) => {
+    this.pservice.serachProductById(this.prodid).subscribe((data) => {
       this.prod = data as Product;
     });
+    console.log(this.prod);
+
+    this.pservice.searchImageById(this.prodid).subscribe((data) => {
+      console.log(data as Image);
+
+      this.images = data as Image[];
+      this.image = this.images[0].img;
+      console.log('images' + this.images);
+    });
+
+    // this.image = this.images[this.index].img;
   }
 
   goRight() {
@@ -48,7 +50,7 @@ export class ProductDescriptionPageComponent implements OnInit {
   goLeft() {
     console.log('Left button clicked');
     if (this.index <= 0) {
-      this.index = this.images.length-1;
+      this.index = this.images.length - 1;
       this.image = this.images[this.index].img;
       console.log(this.image);
     } else {
@@ -58,4 +60,10 @@ export class ProductDescriptionPageComponent implements OnInit {
     }
   }
 
+  addToCart() {
+    console.log("clicked");
+    this.pservice.addToCart(this.prodid,this.cartId).subscribe((data) => {
+      console.log(data);
+    });
+  }
 }
