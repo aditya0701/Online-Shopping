@@ -1,7 +1,7 @@
 export class Product {
- prodid:number|undefined;
+ prodid:number=0;
  prodName:string|undefined;
- price:number|undefined;
+ price:number=0;
  category:string|undefined;
  description:string|undefined;
  inStock:number|undefined;

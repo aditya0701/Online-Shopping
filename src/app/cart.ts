@@ -4,6 +4,6 @@ import { User } from './user';
 export class Cart {
   cartId: number | undefined;
   quantity: number | undefined;
-  products: Product[] | undefined;
-  user: User|undefined;
+  addedProduct: Product[] | undefined;
+  user: User | undefined;
 }

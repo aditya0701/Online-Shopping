@@ -1,0 +1,121 @@
+<div class="container">
+  <div class="column1">
+    <!-- filter price and category-->
+    <div class="catrow">
+      <div>
+        <h4>Filter by Category Name:</h4>
+        <div>
+          <input
+            class="iblock"
+            type="text"
+            placeholder="Enter Category Name"
+            [(ngModel)]="pCat"
+          />
+          <button class="btn" (click)="onFilterCatClick()">Apply Filter</button>
+        </div>
+
+        <h4>Filter by Brand Name:</h4>
+        <div>
+          <input
+            class="iblock"
+            type="text"
+            placeholder="Enter Brand Name"
+            [(ngModel)]="pBrand"
+          />
+          <button class="btn" (click)="onFilterBrandClick()">
+            Apply Filter
+          </button>
+        </div>
+
+        <h4>Filter by Price Range:</h4>
+        <div>
+          <input
+            class="iblock"
+            type="number"
+            placeholder="Enter Lower Range"
+            [(ngModel)]="pLower"
+          /><br />
+          <input
+            class="iblock"
+            type="number"
+            placeholder="Enter Upper Range"
+            [(ngModel)]="pUpper"
+          /><br />
+          <button class="btn" (click)="onFilterPriceClick()">
+            Apply Filter
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sort asc and desc-->
+    <div class="catrow">
+      <p style="font-weight: 600">Sort by Price</p>
+      <div>
+        <span>
+          <button
+            type="button"
+            class="btn1"
+            name="sort"
+            value="asc"
+            (click)="onPriceSortClickAsc()"
+          >
+            Ascending
+          </button>
+          <button
+            type="button"
+            class="btn1"
+            name="sort"
+            value="desc"
+            (click)="onPriceSortClickDsc()"
+          >
+            Descending
+          </button>
+        </span>
+        <button type="button" class="btn1" (click)="getAllProducts()">
+          Show all Products
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="column2">
+    <div class="row">
+      <!-- item-products-->
+      <div class="itemrow" *ngFor="let p of products; index as i">
+        <div class="pitem">
+          <div>
+            <img
+              style="height: 300px; width: 300px"
+              src="{{ image[i] }}"
+              alt="productimage"
+            />
+            <div style="background-color: rgb(236, 231, 223)">
+              <span
+                ><label><input type="checkbox" name="compare" /> </label
+              ></span>
+              <span>Add to compare</span>
+            </div>
+          </div>
+        </div>
+        <div class="pitem">
+          <!--redirects to the product description page-->
+          <div class="pdesc">
+            <span
+              ><p>{{ p.prodName }}</p></span
+            >
+            <span
+              ><p>{{ p.description }}</p></span
+            >
+            <span
+              ><p>{{ p.price | currency: "INR" }}</p></span
+            >
+            <button class="button" (click)="viewProduct(p.prodid)">
+              View Product
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

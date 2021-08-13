@@ -1,4 +1,6 @@
+import { JsonpClientBackend } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Image } from '../image';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
@@ -12,17 +14,25 @@ export class ProductDescriptionPageComponent implements OnInit {
   images: any;
   index: number = 0;
   image: string | undefined;
-  prodid: number = 2;
+  prodid: number=0;
   prod: Product;
-  cartId:number=4;
-  constructor(private pservice: ProductService) {
+  cartId: number = 1;
+  constructor(
+    private pservice: ProductService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
     this.prod = new Product();
   }
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      console.log(params);
+      this.prodid = params.data;
+    });
     this.pservice.serachProductById(this.prodid).subscribe((data) => {
       this.prod = data as Product;
+      console.log(this.prod);
     });
-    console.log(this.prod);
 
     this.pservice.searchImageById(this.prodid).subscribe((data) => {
       console.log(data as Image);
@@ -61,9 +71,12 @@ export class ProductDescriptionPageComponent implements OnInit {
   }
 
   addToCart() {
-    console.log("clicked");
-    this.pservice.addToCart(this.prodid,this.cartId).subscribe((data) => {
+    let data:any=this.cartId;
+    this.pservice.addToCart(this.prodid, this.cartId).subscribe((data) => {
       console.log(data);
     });
+    this.router.navigate(['showcart'],{
+      queryParams:{data:JSON.stringify(this.cartId)}
+    })
   }
 }

@@ -2,13 +2,12 @@
   <div id="left">
     <h1>Product Image</h1>
     <div><button id="wishlist">Wishlist</button></div>
-    
+
     <div class="imageSlider">
       <button class="goLeft" (click)="goLeft()">left</button>
       <img src="{{ image }}" alt="" id="myImage" />
       <button class="goRight" (click)="goRight()">right</button>
     </div>
-  
   </div>
   <div id="right">
     <h1>{{ prod.prodName }}</h1>
@@ -17,6 +16,6 @@
     <p id="general">Category: {{ prod.category }}</p>
     <h2>Description</h2>
     <p id="desc">{{ prod.description }}</p>
-    <button id="cart" (click)=addToCart()>Add To cart</button>
+    <button id="cart" (click)="addToCart()">Add To cart</button>
   </div>
 </div>
