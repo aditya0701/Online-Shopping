@@ -9,8 +9,8 @@
         <th>Delete</th>
 
     </thead>
-        <tr *ngFor =" let p of prod;index as i">
-            <td><img src="{{image[i]}}" style="width:128px;height:128px;" alt="Image Not Uploaded by Retailer"></td>
+        <tr *ngFor =" let p of prod">
+            <td><img src="{{p.url}}" style="width:128px;height:128px;" alt="Image Not Uploaded by Retailer"></td>
             <td>{{p.prodName}}</td>
             <td>{{p.brand}}</td>
             <td>{{p.price}}</td>

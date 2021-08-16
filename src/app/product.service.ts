@@ -62,8 +62,8 @@ export class ProductService {
     );
   }
 
-  addNewProduct(product: Product) {
-    return this.httpClient.post(this.baseUrl + '/products/addproduct', product);
+  addNewProduct(product: Product,supplierid:number) {
+    return this.httpClient.post(this.baseUrl + '/products/addproduct/'+supplierid, product);
   }
 
   getCartById(cartId: number) {

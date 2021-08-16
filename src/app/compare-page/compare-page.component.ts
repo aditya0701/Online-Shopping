@@ -18,8 +18,6 @@ export class ComparePageComponent implements OnInit {
   isDisabled: boolean = false;
 
   products = new Array<Product>();
-  images = new Array<Image>();
-  image = new Array<String>();
 
   compareProducts: number[] = [];
 
@@ -41,22 +39,6 @@ export class ComparePageComponent implements OnInit {
       this.prodService.findByCategory(this.pCat).subscribe((data) => {
         console.log(data);
         this.products = data as Product[];
-        this.image = [];
-        for (var index in this.products) {
-          this.prodService
-            .searchImageById(this.products[index].prodid)
-            .subscribe((data) => {
-              if (data == null || data === 0) {
-                this.images = [];
-                this.image = [];
-                console.log('Empty image' + this.image);
-              } else {
-                this.images = data as Image[];
-                this.image.push(this.images[0].img);
-                console.log('img Found' + this.image);
-              }
-            });
-        }
       });
     }
   }
@@ -70,22 +52,6 @@ export class ComparePageComponent implements OnInit {
       this.prodService.findByBrand(this.pBrand).subscribe((data) => {
         console.log(data);
         this.products = data as Product[];
-        this.image = [];
-        for (var index in this.products) {
-          this.prodService
-            .searchImageById(this.products[index].prodid)
-            .subscribe((data) => {
-              if (data == null || data === 0) {
-                this.images = [];
-                this.image = [];
-                console.log('Empty image' + this.image);
-              } else {
-                this.images = data as Image[];
-                this.image.push(this.images[0].img);
-                console.log('img Found' + this.image);
-              }
-            });
-        }
       });
     }
   }
@@ -101,22 +67,6 @@ export class ComparePageComponent implements OnInit {
         .subscribe((data) => {
           console.log(data);
           this.products = data as Product[];
-          this.image = [];
-          for (var index in this.products) {
-            this.prodService
-              .searchImageById(this.products[index].prodid)
-              .subscribe((data) => {
-                if (data == null || data === 0) {
-                  this.images = [];
-                  this.image = [];
-                  console.log('Empty image' + this.image);
-                } else {
-                  this.images = data as Image[];
-                  this.image.push(this.images[0].img);
-                  console.log('img Found' + this.image);
-                }
-              });
-          }
         });
     }
   }
@@ -152,22 +102,6 @@ export class ComparePageComponent implements OnInit {
     this.prodService.getAllProducts().subscribe((data) => {
       this.products = data as Product[];
       console.log(this.products);
-      this.image = [];
-      for (var index in this.products) {
-        this.prodService
-          .searchImageById(this.products[index].prodid)
-          .subscribe((data) => {
-            if (data == null || data === 0) {
-              this.images = [];
-              this.image = [];
-              console.log('Empty image' + this.image);
-            } else {
-              this.images = data as Image[];
-              this.image.push(this.images[0].img);
-              console.log('img Found' + this.image);
-            }
-          });
-      }
     });
   }
 

@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Login } from '../login';
+import { ProductService } from '../product.service';
+import { Supplier } from '../supplier';
 import { User } from '../user';
 import { UserService } from '../user.service';
 
@@ -15,19 +17,20 @@ export class UserLoginComponent implements OnInit {
   registerForm!: FormGroup;
   submitted = false;
 
-  login: Login;
+  login!: Login;
   email: string = '';
-  val:string="";
   password: string = '';
+  user:User;
+  supplier:Supplier;
   uId$!: Observable<number | null>;
-  user: User;
+
   constructor(
     private formBuilder: FormBuilder,
     private _customerService: UserService,
     private _router: Router
   ) {
-    this.user = new User();
-    this.login = new Login();
+    this.user=new User();
+    this.supplier=new Supplier();
   }
 
   ngOnInit(): void {
@@ -41,44 +44,83 @@ export class UserLoginComponent implements OnInit {
     });
   }
 
-  loginU() {
+  loginUser() {
     this.submitted = true;
 
     // stop here if form is invalid
     if (this.registerForm.invalid) {
-      console.log('form invalid');
-
       return;
     } else {
-      console.log('Form Valid');
-
-      
+      this.login = new Login();
       this.login.email = this.email;
       this.login.password = this.password;
-      this._router.navigate(['homepage'], {
-        queryParams: { data: 2 },
-      });
-      // this._customerService.loginUser(this.login).subscribe((data) => {
-      //   this.user = data as User;
-      //   console.log('user id= ' + this.user.userId);
-      //   this.val = this.user.userId.toString();
-      //   // sessionStorage.setItem("user", this.val )
-      //   // this._router.navigate(['homepage']);
-      // });
+      this._customerService.loginuser(this.login).subscribe((data)=>{
+        this.user = data as User;
+        if(this.user != undefined){
+          console.log("login page"+this.user.userid.toString());
+          
+          sessionStorage.setItem('user',this.user.userid.toString())
+          this._router.navigate(['homepage']);
+        }
+        else{
+          alert("Wrong username or password");
+        }
+      })
+      
+
       //alert(this.login.email);
-      
-      
     }
   }
-  // moveToHomePage(id: any) {
-  //   if (id < 0) {
-  //     alert('User Not Found');
-  //     this.uId$ = null!;
-  //     return;
-  //   }
-  //   sessionStorage.setItem('user', id);
-  //   this._router.navigate(['homepage']);
-  // }
+  loginAdmin() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+      return;
+    } else {
+      this.login = new Login();
+      this.login.email = this.email;
+      this.login.password = this.password;
+      this._customerService.loginadmin(this.login);
+      // this._router.navigate(['AdminPage']); //change the nvaigation acc to page
+      //alert(this.login.email);
+    }
+  }
+  loginRetailer() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+      return;
+    } else {
+      this.login = new Login();
+      this.login.email = this.email;
+      this.login.password = this.password;
+      this._customerService.loginretailer(this.login).subscribe((data) => {
+        this.supplier = data as Supplier;
+        if (this.supplier != undefined) {
+          console.log('login page' + this.supplier.supplier_id.toString());
+
+          sessionStorage.setItem('supplier', this.supplier.supplier_id.toString());
+          this._router.navigate(['retailerpage']);
+        } else {
+          alert('Wrong username or password');
+        }
+      });
+      this._router.navigate(['retailerpage']); //change the navigation acc to page
+      //alert(this.login.email);
+    }
+  }
+
+  moveToHomePage(id: any) {
+    if (id < 0) {
+      alert('User Not Found');
+      this.uId$ = null!;
+      return;
+    }
+    sessionStorage.setItem('user', id);
+    this._router.navigate(['home']);
+  }
 
   forgotPassword() {
     if (this.email === '') {

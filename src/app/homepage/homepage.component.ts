@@ -21,15 +21,12 @@ export class HomepageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-      console.log('params' + params.data);
-      this.userid = params.data;
-      console.log('prodid: ' + this.userid);
-      if (this.userid == undefined) {
-        this.userid = 1;
-      }
-      console.log('home page user ID=' + this.userid);
-    });
+    this.userid = parseInt(sessionStorage.getItem('user')!);
+    if (this.userid == undefined) {
+      this.userid = 1;
+    }
+    console.log("Homepage userid"+this.userid);
+    
   }
   //send all the userid to other components
   findByName() {

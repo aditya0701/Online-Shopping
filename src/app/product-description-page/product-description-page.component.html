@@ -1,12 +1,9 @@
 <div id="container">
   <div id="left">
     <h1>Product Image</h1>
-    <div><button id="wishlist">Wishlist</button></div>
 
     <div class="imageSlider">
-      <button class="goLeft" (click)="goLeft()">left</button>
-      <img src="{{ image }}" alt="" id="myImage" />
-      <button class="goRight" (click)="goRight()">right</button>
+      <img src="{{prod.url}}" alt="" id="myImage" />
     </div>
   </div>
   <div id="right">

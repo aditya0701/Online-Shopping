@@ -2,8 +2,7 @@ import { Product } from './product';
 import { User } from './user';
 
 export class Cart {
-  cartId: number=0;
-  quantity: number | undefined;
+  cart_id: number = 0;
   addedProduct: Product[] | undefined;
   user: User | undefined;
 }

@@ -1,22 +1,23 @@
-
-<h1 style="background-color:lightblue;text-align: center; font-size: 75px; color:darkblue;">{{title}}</h1>
+<!-- <h1 class="heading">{{title |uppercase}}</h1> -->
 <div class="topnav">
-    <a class="active" href="#home">Home</a>
-    <a href="showproducts">Products</a><!--    make these buttons -->
-    <a href="compareproducts">Compare</a>
-    <a href="showItem">Categories</a>
-    <a href="showcart">Cart</a>
-    <a href="user-login">LogIn/SignUp</a>
-    <button (click)=viewProfile()>User Profile</button>
-    <div class="search-container">
-        <form action="/action_page.php">
-          <input type="text" placeholder="Search.." [(ngModel)]="val" name="first">
-          <button type="submit" (click)=findByName()><i class="fa fa-search">search</i></button>
-        </form>
-  </div>
+  <ul>
+    <li class="heading">{{title |uppercase}}</li>
+    <div class="items">
+      <li><a class="active" href="#home">Home</a></li>
+      <li><a href="showproducts">Products</a></li><!--    make these buttons -->
+      <li><a href="compareproducts">Compare</a></li>
+      <li><a href="showItem">Categories</a></li>
+      <li><a href="showcart">Cart</a></li>
+      <li><a href="user-login">LogIn/SignUp</a></li>
+    </div>
+    <li><a href="user-profile">User Profile</a></li>
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." [(ngModel)]="val" name="first">
+      <button type="submit" (click)=findByName()><i class="fa fa-search">search</i></button>
+    </form>
+  </ul>
 </div>
 <br>
 <router-outlet></router-outlet>
-
 
 

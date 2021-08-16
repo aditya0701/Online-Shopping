@@ -1,6 +1,7 @@
 import { JsonpClientBackend } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, Router } from '@angular/router';
+import { Cart } from '../cart';
 import { Image } from '../image';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
@@ -17,13 +18,15 @@ export class ProductDescriptionPageComponent implements OnInit {
   prodid: number = 1;
   prod: Product;
   userId: number = 1;
-  cartId: number = 1;
+  cartId: number = 2;
+  cart:Cart;
   constructor(
     private pservice: ProductService,
     private router: Router,
     private route: ActivatedRoute
   ) {
     this.prod = new Product();
+    this.cart = new Cart();
   }
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -37,14 +40,15 @@ export class ProductDescriptionPageComponent implements OnInit {
       this.pservice.serachProductById(this.prodid).subscribe((data) => {
         this.prod = data as Product;
         console.log(this.prod);
-        this.pservice.searchImageById(this.prodid).subscribe((data) => {
-          console.log(data as Image);
-
-          this.images = data as Image[];
-          this.image = this.images[0].img;
-          console.log('images' + this.images);
-        });
       });
+      this.userId = parseInt(sessionStorage.getItem('user')!);
+      this.pservice.findCartByUserid(this.userId).subscribe((data)=>{
+        console.log("Prod desc cart:");
+        console.log(data);
+        this.cart= data;
+        this.cartId = this.cart.cart_id;
+        console.log(this.cartId);
+      })
     });
 
     // this.image = this.images[this.index].img;
@@ -76,15 +80,9 @@ export class ProductDescriptionPageComponent implements OnInit {
   }
 
   addToCart() {
-    this.pservice.findCartByUserid(this.userId).subscribe((data) => {
-      console.log('cart: ' + data);
-      this.cartId = data.cartId;
-      this.pservice.addToCart(this.prodid, this.cartId).subscribe((data) => {
+    this.pservice.addToCart(this.prodid, this.cartId).subscribe((data) => {
         console.log(data);
       });
-      this.router.navigate(['showcart'], {
-        queryParams: { data: this.cartId },
-      });
-    });
+      this.router.navigate(['showcart']);
   }
 }

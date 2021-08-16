@@ -9,6 +9,7 @@ import { User } from './user';
   providedIn: 'root',
 })
 export class UserService {
+  private _tempurl = 'http://localhost:9797/usercontroller/';
   private _url = 'http://localhost:9797/usercontroller/';
   constructor(private _http: HttpClient) {}
 
@@ -23,11 +24,20 @@ export class UserService {
     this._url += 'save/';
     return this._http.post(this._url, newUser);
   }
-  loginUser(login: Login): Observable<User> {
-    this._url += 'loginUser/';
-    console.log(this._url);
-
-    return this._http.post<User>(this._url, login);
+  loginuser(loginuser: Login): Observable<any> {
+    this._url = this._tempurl;
+    this._url += 'loginUser';
+    return this._http.post<any>(this._url, loginuser);
+  }
+  loginadmin(loginadmin: Login): Observable<any> {
+    this._url = this._tempurl;
+    this._url += 'loginAdmin';
+    return this._http.post<any>(this._url, loginadmin);
+  }
+  loginretailer(loginretailer: Login): Observable<any> {
+    this._url = this._tempurl;
+    this._url += 'loginSupplier';
+    return this._http.post<any>(this._url, loginretailer);
   }
   generateOTP(): Observable<number> {
     this._url += 'generateOTP/';

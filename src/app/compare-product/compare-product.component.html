@@ -2,7 +2,6 @@
   <table class="compare-table">
     <thead>
       <th></th>
-
       <th>Product ID</th>
       <th>Product Name</th>
       <th>Brand</th>
@@ -13,25 +12,25 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let p of products; index as i">
+      <tr *ngFor="let p of products">
         <!-- <td id="first-border-style"><img src="\assets\oneplus8.jpg"><button id="button-style">Add to Cart</button></td> -->
-        <div (click)="viewProduct(products[i].prodid)">
+        <div (click)="viewProduct(p.prodid)">
           <td id="first-border-style">
             <img
-              src="{{ image[i] }}"
-              alt="img of {{ products[i].prodName }}"
+              src="{{ p.url }}"
+              alt="img of {{ p.prodName }}"
             /><button id="button-style" (click)="addToCart(p.prodid)">
               Add to Cart
             </button>
           </td>
           <!-- <td><img src={{p.url}}></td> -->
-          <td>{{ products[i].prodid }}</td>
-          <td>{{ products[i].prodName }}</td>
-          <td>{{ products[i].brand }}</td>
-          <td>{{ products[i].price }}</td>
-          <td>{{ products[i].category }}</td>
-          <td>{{ products[i].description }}</td>
-          <td>{{ products[i].supplier.supplier_name }}</td>
+          <td>{{ p.prodid }}</td>
+          <td>{{ p.prodName }}</td>
+          <td>{{ p.brand }}</td>
+          <td>{{ p.price }}</td>
+          <td>{{ p.category }}</td>
+          <td>{{ p.description }}</td>
+          <td>{{ p.supplier.supplier_name }}</td>
         </div>
       </tr>
     </tbody>
