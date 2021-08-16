@@ -1,0 +1,40 @@
+<table class="compare-table">
+    <thead>
+        <th></th>
+        
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Brand</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Supplier</th>
+
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let p of prod">
+        <!-- <td id="first-border-style"><img src={{p.url}}><button id="button-style"><a routerLink="retailerupdatefunction">Update</a></button></td> -->
+        <td id="first-border-style"><img src={{p.url}}><button id="button-style" (click)="editInfo(p.prodId)">Edit</button></td>
+
+        <td>{{p.prodId}}</td>
+        <td>{{p.prodName}}</td>
+
+        <td>{{p.brand}}</td>
+        <td>{{p.price}}</td>
+        <td>{{p.pcategory}}</td>
+        <td>{{p.pdescription}}</td>
+        <!-- <td><input  type="text" name="prodid" [(ngModel)]="p.prodName" required></td>       
+        <td><input  type="text" name="brand" [(ngModel)]="p.brand" required></td>       
+        <td><input  type="text" name="price" [(ngModel)]="p.price" required></td>       
+        <td><input  type="text" name="category" [(ngModel)]="p.pcategory" required></td>       
+        <td><input  type="text" name="description" [(ngModel)]="p.pdescription" required></td>        -->
+
+        <td>{{p.supplierId}}</td>
+        <!-- <button (click)="UpdateProd(p.prodId)">update</button>  -->
+
+    </tr> 
+
+    </tbody>
+
+</table>

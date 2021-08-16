@@ -1,0 +1,55 @@
+<div class="title">Update Product</div>
+
+<div class="container">
+<br><br>
+
+<div>
+    <form #myForm="ngForm" (ngSubmit)="saveData()">
+
+        <table class="updatetable">
+                <!-- <tr>
+                    <td><label for="prodid">Product ID</label> </td>   
+                    <td><input  type="text" name="prodid" [(ngModel)]="prod.prodId" value={{prod.prodId}} required></td>       
+                </tr> -->
+                <tr id="rows">
+                    <td><label for="prodname">Product Name</label> </td>   
+                    <td><input  type="text" name="prodname" [(ngModel)]="prod.prodName" required></td>       
+                </tr>
+                <tr id="rows">
+                    <td><label for="price">Product Price</label> </td>   
+                    <td><input  type="text" name="price" [(ngModel)]="prod.price" required></td>       
+                </tr>
+                <tr id="rows">
+                    <td><label for="brand">Product Brand</label> </td>   
+                    <td><input  type="text" name="brand" [(ngModel)]="prod.brand" required></td>       
+                </tr>
+                <!-- <tr>
+                    <td><label for="supplierId">Supplier Id</label> </td>   
+                    <td><input  type="text" name="supplierId" [(ngModel)]="prod.supplierId" required></td>       
+                </tr> -->
+                <tr id="rows">
+                    <td><label for="stock">Product stock</label> </td>   
+                    <td><input  type="text" name="stock" [(ngModel)]="prod.stock" required></td>       
+                </tr>
+                <tr id="rows">
+                    <td><label for="category">Product Category</label> </td>   
+                    <td><input  type="text" name="category" [(ngModel)]="prod.pcategory" required></td>       
+                </tr>
+                <tr id="rows">
+                    <td><label for="description">Product description</label> </td>   
+                    <td><input  type="text" name="description" [(ngModel)]="prod.pdescription" required></td>       
+                </tr>
+                <tr id="rows">
+                    <td><label for="url">Product Image url</label> </td>   
+                    <td><input  type="text" name="url" [(ngModel)]="prod.url" required></td>       
+                </tr>
+                <tr>
+                    <td></td>   
+                    <td><input type="submit" id="button" value="Update Product" [disabled]="!myForm.valid"></td>       
+                </tr>
+        </table>
+
+    </form>
+
+</div>
+</div>

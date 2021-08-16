@@ -40,10 +40,8 @@ export class ProductService {
       this.baseUrl + '/productsbybrand/' + brand
     );
   }
-  findCartByUserid(userid:number){
-    return this.httpClient.get<Cart>(
-      this.baseUrl + '/cartbyuser/' + userid
-    );
+  findCartByUserid(userid: number) {
+    return this.httpClient.get<Cart>(this.baseUrl + '/cartbyuser/' + userid);
   }
   findProductByPrice(lower: number, upper: number) {
     return this.httpClient.get<Product[]>(
@@ -57,15 +55,49 @@ export class ProductService {
     );
   }
 
-  deleteFromCart(productid: number, cartId: number){
+  deleteFromCart(productid: number, cartId: number) {
     return this.httpClient.put(
       this.baseUrl + '/' + productid + '/deleteFromCart/' + cartId,
       0
     );
   }
 
+  addNewProduct(product: Product) {
+    return this.httpClient.post(this.baseUrl + '/products/addproduct', product);
+  }
+
   getCartById(cartId: number) {
     return this.httpClient.get(this.baseUrl + '/cart/' + cartId);
+  }
+
+   //display all by retailer id
+
+  getProductsBySupplier(supplierid:number)
+  {
+    return this.httpClient.get(
+      this.baseUrl + '/products/supplier/' + supplierid
+    );
+  }
+
+  //delete product by Retailer
+  deleteProduct(prodid:number){
+    return this.httpClient.delete(this.baseUrl+"/products/deleteproduct/"+prodid);
+  }
+
+  updateProduct(prodid:number){
+    return this.httpClient.get(this.baseUrl+"/products/updateproduct/"+prodid);
+  }
+
+  //get supplier details
+
+  getSupplierDetails(supplierid:number){
+    return this.httpClient.get(
+      this.baseUrl + '/supplier/' + supplierid
+    );
+
+  }
+  editproduct(product:Product){
+    return this.httpClient.put(this.baseUrl+"/products/editproduct",product);
   }
 
   // getProductById(

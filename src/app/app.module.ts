@@ -17,6 +17,11 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AddProductsComponent } from './add-products/add-products.component';
+import { DeleteProductComponent } from './delete-product/delete-product.component';
+import { UpdateRetailerComponent } from './update-retailer/update-retailer.component';
+import { UpdateProductComponent } from './update-product/update-product.component';
+import { RetailerProfileComponent } from './retailer-profile/retailer-profile.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +37,11 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     RegisterUserComponent,
     UserLoginComponent,
     ForgotPasswordComponent,
+    AddProductsComponent,
+    DeleteProductComponent,
+    UpdateRetailerComponent,
+    UpdateProductComponent,
+    RetailerProfileComponent,
   ],
   imports: [
     BrowserModule,

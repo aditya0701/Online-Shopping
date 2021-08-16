@@ -1,0 +1,78 @@
+<div class="title">My Profile</div>
+<div class="profile-style">
+
+<table class="profiletable">
+    <thead>
+        <div class="imgstyle">
+        <!-- <th id="table1stylehead">         -->
+            <img id="img1style" src="\assets\profileicon.jpg">
+        <!-- </th> --></div>
+    </thead>
+    <tbody class="table1style">
+    
+    <tr class="row">
+       <div><span  class="row1"> Retailer ID</span>  <span  class="row2">{{details.supplierId}}</span></div>
+
+    </tr>
+    <tr>
+        <div><span  class="row1"> Company Name </span>  <span  class="row2">{{details.companyName}}</span></div>
+
+        <!-- <div class="row1"> Company Name  <span>{{details.companyName}}</span></div> -->
+
+    </tr>
+    <tr>
+        <div><span  class="row1"> Phone Number </span>  <span  class="row2">{{details.phone}}</span></div>
+
+        <!-- <div class="row1"> Phone Number  <span>{{details.phone}}</span></div> -->
+    </tr>
+    <tr>
+        
+        <td><button id="button-style" (click)="Add()">Add Products</button></td>
+        <td><button id="button-style" (click)="Delete()">Delete Products</button></td>
+        <td><button id="button-style" (click)="Edit()">Edit Products</button></td>
+
+    </tr>
+     </tbody> 
+
+
+</table>
+
+
+</div>
+
+<div class="title2">My Products</div>
+
+<table class="compare-table">
+    <thead>
+        <th></th>
+        
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Brand</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Supplier</th>
+
+    </thead>
+
+    <tbody>
+    <tr id="table2style" *ngFor="let p of prod">
+        <!-- <td id="first-border-style"><img src={{p.url}}><button id="button-style"><a routerLink="retailerupdatefunction">Update</a></button></td> -->
+        <td id="first-border-style"><img src={{p.url}}></td>
+
+        <td>{{p.prodId}}</td>
+        <td>{{p.prodName}}</td>
+
+        <td>{{p.brand}}</td>
+        <td>{{p.price}}</td>
+        <td>{{p.pcategory}}</td>
+        <td>{{p.pdescription}}</td>
+        <td>{{p.supplierId}}</td>
+
+    </tr> 
+
+    </tbody>
+
+</table>
+

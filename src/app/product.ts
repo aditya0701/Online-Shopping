@@ -8,6 +8,7 @@ export class Product {
   description: string | undefined;
   inStock: number | undefined;
   brand: string | undefined;
+  url:string|undefined;
   supplier: Supplier = {
     supplier_id: 1,
     supplier_name: 'Prince Logistic',

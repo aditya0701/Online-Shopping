@@ -1,0 +1,32 @@
+<table class="compare-table">
+    <thead>
+        <th></th>
+        
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Brand</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Supplier</th>
+
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let p of prod">
+        <td id="first-border-style"><img src={{p.url}}><button id="button-style" (click)="DeleteProd(p.prodId)">Delete</button> </td>
+        <!-- <td id="first-border-style"><img src={{p.url}}><button id="button-style">  <a routerLink="retailerupdateproduct">Delete</a>
+        </button> </td> -->
+        <td>{{p.prodId}}</td>
+        <td>{{p.prodName}}</td>
+        <td>{{p.brand}}</td>
+        <td>{{p.price}}</td>
+        <td>{{p.pcategory}}</td>
+        <td>{{p.pdescription}}</td>
+        <td>{{p.supplierId}}</td>
+    </tr> 
+
+    </tbody>
+
+</table>
+
