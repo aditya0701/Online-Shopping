@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style>
+            body{
+                margin:50px;
+                background-color: #F0F8Ff;
+            }
+            td{
+                text-align:left;
+            }
+            .panel{
+                max-width:500px;
+                margin-left:auto;
+                margin-right:auto;
+            }
+            .btn:hover{
+                color:aliceblue;
+            }
+
+
+
+        </style>
+    </head>
+    <body>
+        <div class="container py-5 col-sm-6 col-sm-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading"><h4><strong>User Profile</strong></h4></div>
+                <div class="panel-body">
+                    <table>
+                        <tr>   
+                            <td><h4>User First Name    :<b>{{User.first_name}}</b><br></h4></td>
+                        </tr>
+                        <tr>
+                            <td><h4>User Last Name      :<b>{{User.last_name}}</b><br></h4></td>
+                        </tr>
+                        <tr>
+                            <td><h4>User Email          :<b>{{User.email}}</b><br></h4></td>
+                        </tr>
+                        <tr>
+                            <td><h4>User Mobile No      :<b>{{User.phone}}</b><br></h4></td>
+                        </tr>
+                        <tr>
+                            <td><h4>User Address        :<b>{{User.address}}</b><br></h4></td>
+                        </tr>
+                    </table>
+                    <button class="btn btn-primary btn-md" (click)="onEditProfileClick()">Edit Profile </button>
+
+                </div>
+            </div>
+            <!-- <a class="nav-link" [routerLink]="['/user-edit']">Edit Profile</a> -->
+        </div>
+    </body>
+</html>

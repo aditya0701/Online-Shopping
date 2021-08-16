@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style>
+         body{
+                margin:50px;
+                padding-left:300px;
+                background-color: #F0F8Ff;
+            }
+            fieldset{
+                background-color:#eeeeee;
+                width:50%;
+                padding-left:20px;
+                padding-bottom:20px;
+       
+                
+            }
+            legend{
+                background-color:gray;
+                color:white;
+                padding:5px 10px;
+                width:40%;
+            }
+            input[type=text],[type=password]{
+                width:60%;
+                padding:12px 20px;
+                margin:8px 0;
+                display:inline-block;
+                border: 1px solid rgba(56,56,56,1);
+                border-bottom:3px solid rgba(169,169,169,0.7);
+                background-clip:padding-box;
+                box-sizing:border-box;
+            }
+            input[type=text]:focus,[type=password]:focus{
+                background-color:lightblue;
+            }
+            .btn:hover{
+                color:aliceblue;}
+        </style>
+    </head>
+    <body>
+       <form>
+       <fieldset>
+       <legend><em><strong>Edit User Details</strong></em></legend>
+       <hr style="height:1px;width:400px;color:gray;background-color:gray;margin:0"><br>
+      <!-- User ID:<br> 
+      <input type="number" class="form-control" name="t2" placeholder="{{oldUser.uid}}"
+      [(ngModel)]=updateUser.uid /><br /> -->
+      Name:<br> 
+      <input type="text" class="form-control" name="t2" placeholder="{{oldUser.first_name}}"
+      [(ngModel)]=updateUser.first_name /><br />
+      Last Name:<br>
+      <input type="text" class="form-control" name="t2" placeholder="{{oldUser.last_name}}"
+      [(ngModel)]=updateUser.last_name /><br />
+      Password:<br>
+      <input type="password" class="form-control" name="t3" placeholder="{{oldUser.password}}"
+      [(ngModel)]=updateUser.password /><br />
+      Email:<br>
+      <input type="text" class="form-control" name="t4" placeholder="{{oldUser.email}}"
+      [(ngModel)]=updateUser.email /><br />
+      Mobile:<br>
+      <input type="text" class="form-control" name="t4" placeholder="{{oldUser.phone}}"
+      [(ngModel)]=updateUser.phone /><br />
+      Address:<br>
+      <input type="text" class="form-control" name="t2" placeholder="{{oldUser.address}}"
+      [(ngModel)]=updateUser.address /><br /> 
+      <button type="submit" class="btn btn-primary btn-md" (click)="onUpdateUserClick()"> Update </button> 
+       </fieldset>
+    </form>
+    </body>
+</html>

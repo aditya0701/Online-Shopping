@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Cart } from './cart';
 import { Product } from './product';
 
 @Injectable({
@@ -39,7 +40,11 @@ export class ProductService {
       this.baseUrl + '/productsbybrand/' + brand
     );
   }
-
+  findCartByUserid(userid:number){
+    return this.httpClient.get<Cart>(
+      this.baseUrl + '/cartbyuser/' + userid
+    );
+  }
   findProductByPrice(lower: number, upper: number) {
     return this.httpClient.get<Product[]>(
       this.baseUrl + '/findProductByPrice/' + lower + '/' + upper
@@ -52,7 +57,37 @@ export class ProductService {
     );
   }
 
+  deleteFromCart(productid: number, cartId: number){
+    return this.httpClient.put(
+      this.baseUrl + '/' + productid + '/deleteFromCart/' + cartId,
+      0
+    );
+  }
+
   getCartById(cartId: number) {
     return this.httpClient.get(this.baseUrl + '/cart/' + cartId);
+  }
+
+  // getProductById(
+  //   prodid1: number,
+  //   prodid2: number,
+  //   prodid3: number,
+  //   prodid4: number
+  // ) {
+  //   return this.httpClient.get(
+  //     this.baseUrl +
+  //       '/products/' +
+  //       prodid1 +
+  //       '/' +
+  //       prodid2 +
+  //       '/' +
+  //       prodid3 +
+  //       '/' +
+  //       prodid4
+  //   );
+  // }
+
+  getSupplierById(supplier_id: number) {
+    return this.httpClient.get(this.baseUrl + '/supplier/' + supplier_id);
   }
 }

@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style>
+            body{
+                margin:50px;
+                padding-left:300px;
+                background-color: #F0F8Ff;
+            }
+            input[type=text],[type=password]{
+                width:40%;
+                padding:12px 20px;
+                margin:8px 0;
+                display:inline-block;
+                border: 1px solid rgba(56,56,56,1);
+                border-bottom:3px solid rgba(169,169,169,0.7);
+                background-clip:padding-box;
+                box-sizing:border-box;
+            }
+            input[type=text]:focus,[type=password]:focus{
+                background-color:lightblue;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="container"> 
+    <form>
+      <h3><em>USER SIGNUP FORM</em></h3>
+      <hr style="height:1px;width:450px;color:gray;background-color:gray;margin:0"><br>
+      <!-- User ID: <br>
+      <input type="number" class="form-control" name="t2" [(ngModel)]=userSignUp.uid /><br /> -->
+      First Name: <br>
+      <input type="text" class="form-control" name="t2" [(ngModel)]=userSignUp.first_name /><br />
+      Last Name: <br>
+      <input type="text" class="form-control" name="t2" [(ngModel)]=userSignUp.last_name /><br />
+      Password:<br>
+      <input type="password" class="form-control" name="t3" [(ngModel)]=userSignUp.password /><br />
+
+      Email:<br>
+      <input type="text" class="form-control" name="t4" [(ngModel)]=userSignUp.email /><br />
+      Mobile:<br>
+      <input type="text" class="form-control" name="t4" [(ngModel)]=userSignUp.phone /><br />
+      Address:<br>
+      <input type="text" class="form-control" name="t2" [(ngModel)]=userSignUp.address /><br /> <br>
+      <button type="submit" class="btn btn-success btn-lg" (click)="onRegisterClick()"> Register </button>
+        
+    </form>
+    </div>
+    </body>
+</html>

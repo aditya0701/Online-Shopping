@@ -1,0 +1,52 @@
+<!-- <div class="row" *ngFor="let p of prod;index as i"> -->
+  <!-- <img src="{{ image[i] }}" width="120" height="150" />
+  <div style="font-size: larger">{{ p.prodName }}</div>
+  <div style="font-size: larger">{{ p.price }}</div> -->
+  <style>
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    </style>
+    <br>
+    <br>
+    <br>
+<div class="vertical-center">
+    <img [src]="link1" class="center" width="450" height="450"><br>   
+    <button (click)=right() class="center">Change</button>
+</div> 
+<br><br><br><br><br>
+<hr style="height: 17px; background-color: black;"><h3 style="text-align: center; font-size: 60px;">Top products</h3><hr style="height: 17px; background-color: black;">
+<style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    .column {
+      float: left;
+      width: 12.5%;
+      padding: 10px;
+    }
+    
+    /* Clearfix (clear floats) */
+    .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+    
+    /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 500px) {
+      .column {
+        width: 100%;
+      }
+    }
+    </style>
+<!--     
+    <div>
+      <a routerLink="productCards">Show Products</a>
+</div> -->
+
+    
+

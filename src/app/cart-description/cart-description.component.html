@@ -1,11 +1,20 @@
-
+<!-- <h1>{{username}}</h1> -->
 <div class="container py-5">
     <table style="border:2px">
+        <thead>
+        <th></th>
+        <th>Product Name</th>
+        <th>Brand</th>
+        <th>Price</th>
+        <th>Delete</th>
+
+    </thead>
         <tr *ngFor =" let p of prod;index as i">
             <td><img src="{{image[i]}}" style="width:128px;height:128px;" alt="Image Not Uploaded by Retailer"></td>
             <td>{{p.prodName}}</td>
             <td>{{p.brand}}</td>
             <td>{{p.price}}</td>
+            <td><button type="button" (click)=deleteProduct(p.prodid)>Delete</button></td>
             <br>
             <!-- <td>{{totalPrice}}</td> -->
             <!-- <td><button class="btn btn-danger" (click)="onDeleteCartProductClick(cart.cId)">Delete item</button></td> -->

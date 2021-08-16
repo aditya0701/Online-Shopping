@@ -12,7 +12,7 @@ import { ProductService } from '../product.service';
 })
 export class CartDescriptionComponent implements OnInit {
   cart: Cart;
-  cartId: number = 0;
+  cartId: number = 1;
   totalPrice: number = 0;
   prod = new Array<Product>();
   images = new Array<Image>();
@@ -30,7 +30,12 @@ export class CartDescriptionComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       console.log(params);
       this.cartId = params.data;
+      if (this.cartId == undefined) {
+        this.cartId = 2;
+      }
     });
+    
+    this.image=[];
     this.pservice.getCartById(this.cartId).subscribe((data) => {
       this.cart = data as Cart;
       this.prod = this.cart.addedProduct as Product[];
@@ -54,5 +59,14 @@ export class CartDescriptionComponent implements OnInit {
 
   addToTotal(price: number) {
     this.totalPrice += price;
+  }
+
+  deleteProduct(prodid:number){
+    console.log("Delete Clicked Product id:"+prodid);
+    
+    this.pservice.deleteFromCart(prodid, this.cartId).subscribe((data) => {
+      console.log(data);
+      this.ngOnInit();
+    });
   }
 }

@@ -1,0 +1,39 @@
+<div class="table-style">
+  <table class="compare-table">
+    <thead>
+      <th></th>
+
+      <th>Product ID</th>
+      <th>Product Name</th>
+      <th>Brand</th>
+      <th>Price</th>
+      <th>Category</th>
+      <th>Description</th>
+      <th>Supplier</th>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let p of products; index as i">
+        <!-- <td id="first-border-style"><img src="\assets\oneplus8.jpg"><button id="button-style">Add to Cart</button></td> -->
+        <div (click)="viewProduct(products[i].prodid)">
+          <td id="first-border-style">
+            <img
+              src="{{ image[i] }}"
+              alt="img of {{ products[i].prodName }}"
+            /><button id="button-style" (click)="addToCart(p.prodid)">
+              Add to Cart
+            </button>
+          </td>
+          <!-- <td><img src={{p.url}}></td> -->
+          <td>{{ products[i].prodid }}</td>
+          <td>{{ products[i].prodName }}</td>
+          <td>{{ products[i].brand }}</td>
+          <td>{{ products[i].price }}</td>
+          <td>{{ products[i].category }}</td>
+          <td>{{ products[i].description }}</td>
+          <td>{{ products[i].supplier.supplier_name }}</td>
+        </div>
+      </tr>
+    </tbody>
+  </table>
+</div>

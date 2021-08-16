@@ -77,6 +77,9 @@
         </button>
       </div>
     </div>
+    <div class="catrow">
+      <button type="button" (click)=compareProducts1()> Compare</button>
+    </div>
   </div>
 
   <div class="column2">
@@ -92,7 +95,7 @@
             />
             <div style="background-color: rgb(236, 231, 223)">
               <span
-                ><label><input type="checkbox" name="compare" /> </label
+                ><label><input type="checkbox" name="compare" value="p.prodid" (change)=addToCompare(p.prodid) [disabled]="isDisabled"/> </label
               ></span>
               <span>Add to compare</span>
             </div>

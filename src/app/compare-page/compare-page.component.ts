@@ -15,12 +15,13 @@ export class ComparePageComponent implements OnInit {
   pBrand: string = '';
   pLower: number = 0;
   pUpper: number = 0;
+  isDisabled: boolean = false;
 
-  @Input()
-  productList: Product[] = [];
   products = new Array<Product>();
   images = new Array<Image>();
   image = new Array<String>();
+
+  compareProducts: number[] = [];
 
   constructor(
     private prodService: ProductService,
@@ -30,10 +31,6 @@ export class ComparePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProducts();
-    // let data: any = this.products;
-    // this.router.navigate(['showItem'], {
-    //   queryParams: { data: JSON.stringify(data) },
-    // });
   }
 
   onFilterCatClick() {
@@ -61,10 +58,6 @@ export class ComparePageComponent implements OnInit {
             });
         }
       });
-      // let data: any = this.products;
-      // this.router.navigate(['showItem'], {
-      //   queryParams: { data: JSON.stringify(data) },
-      // });
     }
   }
 
@@ -94,10 +87,6 @@ export class ComparePageComponent implements OnInit {
             });
         }
       });
-      // let data: Product[] = this.products;
-      // this.router.navigate(['showItem'], {
-      //   queryParams: { data: JSON.stringify(data) },
-      // });
     }
   }
 
@@ -129,10 +118,6 @@ export class ComparePageComponent implements OnInit {
               });
           }
         });
-      // let data: any = this.products;
-      // this.router.navigate(['showItem'], {
-      //   queryParams: { data: JSON.stringify(data) },
-      // });
     }
   }
 
@@ -183,6 +168,19 @@ export class ComparePageComponent implements OnInit {
             }
           });
       }
+    });
+  }
+
+  addToCompare(val: number) {
+      this.compareProducts.push(val);
+      console.log(this.compareProducts);
+    if (this.compareProducts.length >= 4) {
+      this.isDisabled = true;
+    }
+  }
+  compareProducts1(){
+    this.router.navigate(['compareproducts'], {
+      queryParams: { data: this.compareProducts },
     });
   }
 }
